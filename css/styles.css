@@ -1,0 +1,74 @@
+body {
+    box-sizing: border-box;
+    margin: 10px;
+
+}
+
+/* About Page */
+
+.about-content {
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+
+}
+
+/* Login and Sign-up Page */
+
+.login-container {
+        width:400px;
+        max-width:100%;
+        text-align: center;
+    }
+
+.login-container .btn-login{
+        background-color:#bb6f43;
+        color:#fff;
+    }
+a{
+        color:#fff;
+    }
+.row {
+    padding: 5px;
+}
+
+/* Product Page */
+.product-nav {
+    margin: 5px;
+    display: flex;
+    justify-content: end;
+}
+
+.product-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    color: #974603b9;
+}
+
+.btn {
+    margin: 2px;
+}
+
+/* Profile */
+
+.profile-container {
+    margin: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+/* cart page */
+
+.ïtem-container {
+    margin: 10px;
+
+}
+
+.cart-msg {
+    text-align: center;
+}
