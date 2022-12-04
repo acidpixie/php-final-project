@@ -72,3 +72,9 @@ a{
 .cart-msg {
     text-align: center;
 }
+
+/* Index / Homepage */
+
+.home-container {
+    margin: 20px;
+}
