@@ -10,3 +10,4 @@
 - Composer
 - PHP
 - Slim
+- SQL

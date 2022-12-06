@@ -31,8 +31,8 @@ CREATE TABLE `bestsellers` (
   `product_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `artist` varchar(50) NOT NULL,
-  `price` int(11) NOT NULL
-  `image` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -40,9 +40,9 @@ CREATE TABLE `bestsellers` (
 --
 
 INSERT INTO `bestsellers` (`product_id`, `name`, `artist`, `price`, `image`) VALUES
-(1, 'Jack in the Box', 'J-Hope', 350, 'jackinthebox.png'),
-(2, 'Oddinary', 'StrayKids', 420, 'oddinary.png'),
-(3, 'Universe', 'NCT', 400, 'universe.jpg');
+(1, 'Jack in the Box', 'J-Hope', 350, 'images/jackinthebox.png'),
+(2, 'Oddinary', 'StrayKids', 420, 'images/oddinary.png'),
+(3, 'Universe', 'NCT', 400, 'images/universe.jpg');
 
 -- --------------------------------------------------------
 
@@ -92,15 +92,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `name`, `artist`, `price`, `image`, `released`) VALUES
-(1, 'Moodswings in This Order', 'DPR IAN', 280, 'mito.jpg', '2021-03-12'),
-(2, 'Lowlife Princess', 'BIBI', 350, 'lowlife.jpg', '2022-11-22'),
-(3, 'Gasoline', 'KEY', 280, 'gasoline.png', '2022-08-21'),
-(4, 'I Love', 'G-idle', 400, 'love.png', '2022-10-17'),
-(5, 'Magic Man', 'Jackson Wang', 290, 'magicman.png', '2022-09-09'),
-(6, 'Jack in the Box', 'J-Hope', 350, 'jackinthebox.png', '2022-07-15'),
-(7, 'Universe', 'NCT', 400, 'universe.jpg', '2022-12-14'),
-(8, 'Oodinary', 'StrayKids', 420, 'oddinary.png', '2022-03-18'),
-(9, 'Advice', 'Taemin', 380, 'advice.jpg', '2022-05-18');
+(1, 'Moodswings in This Order', 'DPR IAN', 280, 'images/mito.jpg', '2021-03-12'),
+(2, 'Lowlife Princess', 'BIBI', 350, 'images/lowlife.jpg', '2022-11-22'),
+(3, 'Gasoline', 'KEY', 280, 'images/gasoline.png', '2022-08-21'),
+(4, 'I Love', 'G-idle', 400, 'images/love.png', '2022-10-17'),
+(5, 'Magic Man', 'Jackson Wang', 290, 'images/magicman.png', '2022-09-09'),
+(6, 'Jack in the Box', 'J-Hope', 350, 'images/jackinthebox.png', '2022-07-15'),
+(7, 'Universe', 'NCT', 400, 'images/universe.jpg', '2022-12-14'),
+(8, 'Oodinary', 'StrayKids', 420, 'images/oddinary.png', '2022-03-18'),
+(9, 'Advice', 'Taemin', 380, 'images/advice.jpg', '2022-05-18');
 
 -- --------------------------------------------------------
 
@@ -120,9 +120,9 @@ CREATE TABLE `upcoming` (
 --
 
 INSERT INTO `upcoming` (`artist`, `album`, `date`, `image`) VALUES
-('WayV', 'Phantom', '2023-01-05', 'phantom.png'),
-('Minho', 'Chase', '2022-12-30', 'chase.png'),
-('BOA', 'Forgive Me', '2022-12-21', 'forgive.jpg');
+('WayV', 'Phantom', '2023-01-05', 'images/phantom.png'),
+('Minho', 'Chase', '2022-12-30', 'images/chase.png'),
+('BOA', 'Forgive Me', '2022-12-21', 'images/forgive.jpg');
 
 -- --------------------------------------------------------
 
