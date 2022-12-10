@@ -22,4 +22,4 @@ echo "<h3>Database Connection</h3>";
 var_dump($dbConfig->connect());
 
 echo "<h3>Load Data from Database</h3>";
-var_dump($albumDAO->readAll($dbConfig));
+var_dump($storeDAO->readAll($dbConfig));

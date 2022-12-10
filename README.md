@@ -4,10 +4,11 @@
 - HTML
 - Bootstrap
 - CSS
-- Javascript
+- Vue
 
 ## Backend
 - Composer
 - PHP
 - Slim
 - SQL
+
