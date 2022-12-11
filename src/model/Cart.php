@@ -1,5 +1,7 @@
 <?php 
 
+include __DIR__ . "/../data/CartDAO.php";
+
 class Cart {
 
     private $user_id;
@@ -7,16 +9,14 @@ class Cart {
     private $cart_id;
     private $product_name;
     private $product_price;
-    private $product_image;
-
-    public function __construct($user_id, $product_id, $cart_id, $product_name, $product_price, $product_image)
+  
+    public function __construct($user_id, $product_id, $cart_id, $product_name, $product_price)
     {
         $this->user_id = $user_id;
         $this->product_id = $product_id;
         $this->cart_id = $cart_id;
         $this->product_name = $product_name;
         $this->product_price = $product_price;
-        $this->product_image = $product_image;
     }
 
     public function getUser_id()
@@ -74,16 +74,6 @@ class Cart {
         return $this;
     }
 
-    public function getProduct_image()
-    {
-        return $this->product_image;
-    }
-
-    public function setProduct_image($product_image)
-    {
-        $this->product_image = $product_image;
-        return $this;
-    }
 
     public static function addToCart() {
         $product_id = $_POST['product_id'];
@@ -94,4 +84,25 @@ class Cart {
         exit();
     }
     
+    public static function showCart() {
+        if (empty($_SESSION['Cart'])) {
+            echo " You do not have any items in your cart";
+        } else {
+            return ($_SESSION['Cart']);
+        }
+    }
+
+    public static function delete() {
+        $product_id = $_POST['product_id'];
+        $index = array_search($product_id, $_SESSION['Cart']);
+        unset($_SESSION['Cart'][$index]);
+        header("Location: ../cart.php");
+        exit();
+    }
+
+    public static function clear() {
+        $_SESSION['Cart'] = [];
+        header("Location: ../cart.php");
+        exit();
+    }
 }

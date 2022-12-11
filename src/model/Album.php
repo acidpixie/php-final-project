@@ -1,6 +1,6 @@
 <?php 
 
-namespace Models;
+include __DIR__ . "/../data/StoreDAO.php";
 
 class Album {
 
@@ -11,14 +11,17 @@ class Album {
     private $image;
     private $released;
 
-    public function __construct($name, $artist, $price, $image, $released) 
+    public function __construct($product_id) 
     {
-    
-        $this->name = $name;
-        $this->artist = $artist;
-        $this->price = $price;
-        $this->image = $image;
-        $this->released = $released;
+
+        $product = StoreDAO::getProduct($product_id);
+
+        $this->product_id = $product['product_id'];    
+        $this->name = $product['name'];
+        $this->artist = $product['artist'];
+        $this->price = $product['price'];
+        $this->image = $product['image'];
+        $this->released = $product['released'];
     }
 
     public function getProduct_id() 
@@ -87,6 +90,22 @@ class Album {
         return $this;
     }
 
-}
+    public static function filter() {
+        $products = StoreDAO::fetchAllProducts();
+        $sortItems = [];
 
-?>
+        if (isset($_POST['sort'])) {
+            $query = "SELECT * FROM products ORDER BY name";
+            }
+        elseif (isset($_POST['price'])) {
+            $query = "SELECT * FROM products ORDER BY price";
+    } else {
+        return [];
+    }
+    return $sortItems;
+}
+    public static function getBestsellers() {
+        return StoreDAO::getBestsellers();
+    }
+
+}

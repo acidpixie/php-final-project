@@ -90,7 +90,7 @@ class User {
 
 
     public static function login() {
-        $login = UserDataAccessObject::loggedin();
+        $login = UserDAO::loggedin();
 
         if ($login == true) {
             $_SESSION['loggedIn'] = $login;
@@ -115,7 +115,7 @@ class User {
     }
 
     public static function signupMember() {
-        $result = UserDataAccessObject::signup();
+        $result = UserDAO::signup();
 
         if ($result) {
             $_SESSION['loggedIn'] = $result;

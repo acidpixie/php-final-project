@@ -76,27 +76,34 @@
 <div id="app"> 
 
   <div class="product-nav">
-    <button type="button" class="btn btn-warning sort-btn">A-Z</button>
-    <button type="button" class="btn btn-warning sort-btn">Price</button>
+    <button type="button" name="sort" class="btn btn-warning sort-btn">A-Z</button>
+    <button type="button" name="price" class="btn btn-warning sort-btn">Price</button>
   </div>
 
   <div class="product-container">
 
-    <div class="items" v-for="product in products">
+    <div class="items">
+    <?php if (!empty($product_id)) : ?>
+
+    <?php foreach ($product_id as $product_id) ?>
+    <?php $product = new Album($product_id);['product_id)']; ?>
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <div class="img-hover-zoom">
-        <img id="profile-img" src="./images/mito.jpg" width="302px" height="302px" data-original="./images/mito.jpg"/>
+        <img id="profile-img" src=".<?= $product->getImage() ?>" width="302px" height="302px" data-original="./images/mito.jpg"/>
         </div>
         <div class="card-body">
-          <h5 class="card-title"> {{ app.artist }} </h5>
-          <p class="card-text"> {{ app.name }} </p>
-          <p class="card-text"> {{ app.price }} </p>
-          <p class="card-text"> {{ app.released }} </p>
+          <h5 class="card-title"> <?= $product->getArtist() ?> </h5>
+          <p class="card-text"> <?= $product->getName() ?> </p>
+          <p class="card-text"> <?= $product->getPrice() ?> </p>
+          <p class="card-text"> <?= $product->getReleased() ?> </p>
         </div>
         <div class="card-footer">
           <small class="text-muted">
             <input type="number" name="quantity" value="">
+            <?php if(isset($_SESSION['Cart']) === true) : ?>
+            <?php if (in_array($product->getId(), $_SESSION['Cart'])) : ?>
+            <?php endif ?>
             <input type="submit" class="btn btn-outline-dark btn-sm" name="purchase" value="add to cart">
           </small>
         </div>
