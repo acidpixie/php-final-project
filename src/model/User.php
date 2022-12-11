@@ -1,6 +1,6 @@
 <?php 
 
-namespace Models;
+include __DIR__ . "/../data/UserDAO.php";
 
 class User {
 
@@ -87,6 +87,46 @@ class User {
         $this->address = $address;
         return $this;
     }
+
+
+    public static function login() {
+        $login = UserDataAccessObject::loggedin();
+
+        if ($login == true) {
+            $_SESSION['loggedIn'] = $login;
+            $_SESSION['Cart'] = [];
+
+            echo "Successfully Logged In";
+            header("Location: ../products.php");
+            exit();
+        } else {
+
+            echo "Error, Something went wrong!";
+            header("Location: ../products.php");
+            exit();
+        }
+
+    }
+
+    public static function logout() {
+        if (session_destroy()) {
+            header("Location: ./index.php");
+        }
+    }
+
+    public static function signupMember() {
+        $result = UserDataAccessObject::signup();
+
+        if ($result) {
+            $_SESSION['loggedIn'] = $result;
+            $_SESSION['Cart'] = [];
+
+            header("Location: ../products.php");
+            exit();
+        }
+    }
+
+
 
 
 }

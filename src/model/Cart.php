@@ -85,12 +85,13 @@ class Cart {
         return $this;
     }
 
-
-    public function shop() {
-
-        if (isset($_GET['purchase'])) {
-            
+    public static function addToCart() {
+        $product_id = $_POST['product_id'];
+        if (!in_array($product_id, $_SESSION['Cart'])) {
+            array_push($_SESSION['Cart'], $product_id);
         }
+        header("Location:../cart.php");
+        exit();
     }
     
 }

@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/9034ff5f85.js" crossorigin="anonymous"></script>
   
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 
 
   <title>Shop</title>
@@ -31,23 +31,23 @@
         <div class="collapse navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="/pages/index.html">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pages/products.html">Shop</a>
+              <a class="nav-link" aria-current="page" href="products.php">Shop</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pages/about.html">About</a>
+              <a class="nav-link" href="about.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pages/cart.html">Cart</a>
+              <a class="nav-link" href="cart.php">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pages/login.html">Login</a>
+              <a class="nav-link" href="login.php">Login</a>
               <!--this needs to change from login to logout once member is logged in-->
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign-up</a>
+              <a class="nav-link" href="signup.php">Sign-up</a>
             </li>
           </ul>
         </div>
@@ -58,7 +58,7 @@
 
    <!-- Background image -->
     <div class="p-5 text-center bg-image" style="
-      background-image: url('/images/headerImg2.jpg');
+      background-image: url('./images/headerImg2.jpg');
       height: 250px;
       margin-top: 58px;
     ">
@@ -86,7 +86,7 @@
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <div class="img-hover-zoom">
-        <img id="profile-img" src="/images/mito.jpg" width="302px" height="302px" data-original="/images/mito.jpg"/>
+        <img id="profile-img" src="./images/mito.jpg" width="302px" height="302px" data-original="./images/mito.jpg"/>
         </div>
         <div class="card-body">
           <h5 class="card-title"> {{ app.artist }} </h5>
