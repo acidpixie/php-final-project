@@ -92,8 +92,10 @@ $title = "Catalogue of Products"
 
 
     <div class="product-nav">
-      <button type="button" name="sort" class="btn btn-warning sort-btn">A-Z</button>
-      <button type="button" name="cost" class="btn btn-warning sort-btn">Price</button>
+      <form method="post" action="">
+      <input type="submit" name="sort" class="btn btn-warning sort-btn" value="A-Z">
+      <input type="submit" name="cost" class="btn btn-warning sort-btn" value="Price">
+      </form>
     </div>
 
 

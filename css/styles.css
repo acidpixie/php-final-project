@@ -41,16 +41,17 @@ a{
 
 .product-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    flex-direction: row;
-    color: #974603b9;
+    flex-direction: column;
+    color: #814522;
 }
 
 .items {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .sort-btn {
