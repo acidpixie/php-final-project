@@ -54,7 +54,7 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style.css">
+
 
   <!-- Latest compiled and minified CSS -->
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -171,11 +171,18 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
 	  
 	</form>
 
+  <?php
+	} else {
+
+    $title = "Your cart is empty!";
+    require_once "./templates/header.php";
+
+    echo "<p>Go back to <a href=\"products.php\">Shop</a></p>";
+
+	}
+  ?>
 
 
-<?php	 
-	if(isset($conn)){ mysqli_close($conn); } }
-?>
 
 
 </body>
@@ -188,13 +195,13 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/nikita.bahadur" target="_blank" role="button"><i class="fa-brands fa-facebook-f"></i></a>
 
       <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-twitter"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/nix.xie/" target="_blank" role="button"><i class="fa-brands fa-instagram"></i></a>
 
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-instagram"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/n3o_z0n3" target="_blank" role="button"><i class="fa-brands fa-twitter"></i></a>
 
     <!-- Section: Social media -->
   </div>
@@ -206,5 +213,9 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
   </div>
   <!-- Copyright -->
 </footer>
+
+<?php	 
+	if(isset($conn)){ mysqli_close($conn); } 
+?>
 
 </html>

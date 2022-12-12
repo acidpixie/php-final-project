@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style.css">
+
 
   <!-- Latest compiled and minified CSS -->
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -37,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="index.php">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="products.php">Shop</a>
@@ -50,11 +49,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php">Login</a>
-              <!--this needs to change from login to logout once member is logged in-->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="signup.php">Sign-up</a>
-            </li>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="logout.php">Logout</a>
@@ -98,7 +95,9 @@
     <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
-        <img src='./images/phantom.png'/>
+      <div class="img-hover-zoom">
+        <img id="profile-img" src='./images/phantom.png' width="302px" height="302px"/>
+      </div>
         <div class="card-body">
           <h5 class="card-title"> WayV </h5>
           <p class="card-text"> Phantom </p>
@@ -115,7 +114,9 @@
     <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
-        <img src='./images/chase.png'/>
+      <div class="img-hover-zoom">
+        <img id="profile-img" src='./images/chase.png' width="302px" height="302px"/>
+      </div>
         <div class="card-body">
           <h5 class="card-title"> Minho </h5>
           <p class="card-text"> Chase </p>
@@ -132,7 +133,9 @@
     <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
-        <img src='./images/forgive.jpg'/>
+      <div class="img-hover-zoom">
+        <img id="profile-img" src='./images/forgive.jpg' width="302px" height="302px"/>
+      </div>
         <div class="card-body">
           <h5 class="card-title"> BOA </h5>
           <p class="card-text"> Forgive Me </p>
@@ -160,7 +163,7 @@
         <div class="card-body">
           <h5 class="card-title"> J-Hope </h5>
           <p class="card-text"> Jack in the Box </p>
-          <p class="card-text"> Price: R 350 </p>
+          <p class="card-text"> 210 Sold </p>
           <p class="card-text"> Released Date: 15/07/2022 </p>
         </div>
         <div class="card-footer">
@@ -179,7 +182,7 @@
         <div class="card-body">
           <h5 class="card-title"> Stray Kids </h5>
           <p class="card-text"> Oodinary </p>
-          <p class="card-text"> Price: R 420 </p>
+          <p class="card-text"> 108 Sold </p>
           <p class="card-text"> Released Date: 18/03/2022 </p>
         </div>
         <div class="card-footer">
@@ -198,7 +201,7 @@
         <div class="card-body">
           <h5 class="card-title"> NCT </h5>
           <p class="card-text"> Universe </p>
-          <p class="card-text"> Price: R 400 </p>
+          <p class="card-text"> 98 Sold </p>
           <p class="card-text"> Released Date: 14/12/2021 </p>
         </div>
         <div class="card-footer">
@@ -225,13 +228,13 @@
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/nikita.bahadur" target="_blank" role="button"><i class="fa-brands fa-facebook-f"></i></a>
 
       <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-twitter"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/nix.xie/" target="_blank" role="button"><i class="fa-brands fa-instagram"></i></a>
 
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-instagram"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/n3o_z0n3" target="_blank" role="button"><i class="fa-brands fa-twitter"></i></a>
 
     <!-- Section: Social media -->
   </div>
