@@ -55,6 +55,10 @@
             <li class="nav-item">
               <a class="nav-link" href="signup.php">Sign-up</a>
             </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Logout</a>
+            </li>
           </ul>
         </div>
 

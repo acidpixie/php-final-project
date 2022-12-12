@@ -1,16 +1,17 @@
 <?php 
 session_start();
 
-include __DIR__ . "/./src/database.php";
+require_once __DIR__ . "/./src/database.php";
 
 $conn = dbconnect();
 
-$name = trim($_POST['firstname']);
+$name = trim($_POST['username']);
 $pass = trim($_POST['password']);
 
 	if(empty($name) || empty($pass)){
-		header("Location:../php-final-project/signin.php?signin=empty");
+		header("Location: ../php-final-project/login.php?login=empty");
 	}else{ 
+		 
 
 						//check if it is customer
 						$name = mysqli_real_escape_string($conn, $name);

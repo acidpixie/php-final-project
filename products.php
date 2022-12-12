@@ -80,6 +80,10 @@ $result = mysqli_query($conn, $query);
             <li class="nav-item">
               <a class="nav-link" href="signup.php">Sign-up</a>
             </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Logout</a>
+            </li>
           </ul>
         </div>
 
@@ -131,7 +135,7 @@ $result = mysqli_query($conn, $query);
               <div class="card-body">
                 <h5 class="card-title"> <?php echo $query_row['artist']; ?> </h5>
                 <p class="card-text"> <?php echo $query_row['name']; ?> </p>
-                <p class="card-text"> <?php echo $query_row['price']; ?> </p>
+                <p class="card-text">R <?php echo $query_row['price']; ?> </p>
                 <p class="card-text"> <?php echo $query_row['released']; ?> </p>
               </div>
               <div class="card-footer">
