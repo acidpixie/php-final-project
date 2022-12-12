@@ -89,9 +89,9 @@
   <div>
     <h4>Coming Soon:</h4>
   </div>
-  <div class="product-container">
+  <div class="product-container2">
 
-    <div class="items">
+    <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <img src='./images/phantom.png'/>
@@ -108,7 +108,7 @@
 
     </div>
 
-    <div class="items">
+    <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <img src='./images/chase.png'/>
@@ -125,7 +125,7 @@
 
     </div>
 
-    <div class="items">
+    <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <img src='./images/forgive.jpg'/>
@@ -147,9 +147,9 @@
   <div>
     <h4>Best Sellers:</h4>
   </div>
-  <div class="product-container">
+  <div class="product-container2">
 
-    <div class="items">
+    <div class="items2">
 
       <div class="card p-2 m-2" style="width: 20rem;">
         <img src='./images/jackinthebox.png'/>
@@ -161,13 +161,54 @@
         </div>
         <div class="card-footer">
           <small class="text-muted">
-            <input type="submit" class="btn btn-outline-dark btn-sm" name="purchase" value="add to cart">
+            <a href="products.php" class="btn btn-outline-dark btn-sm">Shop</a> 
           </small>
         </div>
       </div>
 
     </div>
+
+    <div class="items2">
+
+      <div class="card p-2 m-2" style="width: 20rem;">
+        <img src='./images/oddinary.png'/>
+        <div class="card-body">
+          <h5 class="card-title"> Stray Kids </h5>
+          <p class="card-text"> Oodinary </p>
+          <p class="card-text"> Price: R 420 </p>
+          <p class="card-text"> Released Date: 18/03/2022 </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <a href="products.php" class="btn btn-outline-dark btn-sm">Shop</a> 
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="items2">
+
+      <div class="card p-2 m-2" style="width: 20rem;">
+        <img src='./images/universe.jpg'/>
+        <div class="card-body">
+          <h5 class="card-title"> NCT </h5>
+          <p class="card-text"> Universe </p>
+          <p class="card-text"> Price: R 400 </p>
+          <p class="card-text"> Released Date: 14/12/2021 </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <a href="products.php" class="btn btn-outline-dark btn-sm">Shop</a> 
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+
   </div>
+
 
 
 </body>

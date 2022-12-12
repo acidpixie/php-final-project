@@ -1,51 +1,3 @@
-<?php 
-session_start();
-
-$product_id = $_GET['productid'];
-
-include __DIR__ . "/./src/database.php";
-include __DIR__ . "/./src/cart.functions.php";
-
-$conn = dbconnect();
-
-if(isset($_POST['productid'])){
-  $product_id = $_POST['productid'];
-}
-
-if(isset($product_id)) {
-  
-  if(!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
-    $_SESSION['total_items'] = 0;
-    $_SESSION['total_price'] = '0.00';
-  }
-
-if(isset($_SESSION['cart'][$product_id])){
-  $_SESSION['cart'][$product_id] = 1;
-} elseif(isset($_POST['cart'])){
-  $_SESSION['cart'][$product_id]++;
-  unset($_POST);
-}
-
-}
-//if save is selected, update quantity
-
-if(isset($_POST['save_change'])){
-  foreach($_SESSION['cart'] as $id =>$qty){
-    if($_POST[$id] == '0'){
-      unset($_SESSION['cart']["$id"]);
-    } else {
-      $_SESSION['cart']["$id"] = $_POST["$id"];
-    }
-  }
-}
-
-if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
-  $_SESSION['total_price'] = total_price($_SESSION['cart']);
-  $_SESSION['total_items'] = total_items($_SESSION['cart']);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +13,7 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
   <script src="https://kit.fontawesome.com/9034ff5f85.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 
-  <title>Shopping Cart</title>
+  <title>Login</title>
 </head>
 
 <body>
@@ -93,10 +45,10 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
               <a class="nav-link" href="about.php">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="cart.php">Cart</a>
+              <a class="nav-link" href="cart.php">Cart</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
+              <a class="nav-link" aria-current="page" href="login.php">Login</a>
               <!--this needs to change from login to logout once member is logged in-->
             </li>
             <li class="nav-item">
@@ -111,17 +63,45 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
   
     <!-- Background image -->
     <div
-    class="p-5 text-center bg-image"
-    style="
-      background-image: url('./images/headerImg2.jpg');
-      height: 250px;
-      margin-top: 58px;
-    "
-  >
+      class="p-5 text-center bg-image"
+      style="
+        background-image: url('./images/headerImg.jpg');
+        height: 400px;
+        margin-top: 58px;
+      "
+    >
       <div class="mask">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text-white">
-            <h1 class="mb-3">Shopping Cart</h1>
+            <h1 class="mb-3">Login Form</h1>
+
+            <form method="post" action="user.verify.php">
+            <div class="login-container">
+              <div class="row">
+                  <div class="col-md-12 form-group">
+                      <input type="text" class="form-control" name="email" placeholder="Email Address">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 form-group">
+                      <input type="password" name="password" placeholder="Enter your Password" class="form-control">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 form-group">
+                      <input type="submit" name="login" class="btn btn-block btn-login" placeholder="Enter your Password" >
+                  </div>
+              </div>
+              </form>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                    <p>Not a member, <a href="signup.php">Sign-up!</a></p>
+                </div>
+              
+
+            </div>
+              </div>
+          </div>
           </div>
         </div>
       </div>
@@ -129,46 +109,21 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
     <!-- Background image -->
   </header>
 
-  <form action="cart.php" method="post">
-	   	<table class="table">
-	   		<tr>
-	   			<th>Item</th>
-	   			<th>Price</th>
-	  			<th>Quantity</th>
-	   			<th>Total</th>
-	   		</tr>
-	   		    
-			<tr>
-      <?php
-      foreach($_SESSION['cart'] as $id => $qty){
-        $conn = dbconnect();
-        $album = mysqli_fetch_assoc(getProductId($conn, $id)); ?>
-				<td><?php echo $album['name'] . " by " . $album['artist']; ?></td>
-				<td><?php echo "R" . $album['price']; ?></td> 
-				<td><input type="text" value="<?php echo $qty; ?>" album="<?php echo $id; ?>"></td>
-				<td><?php echo "R" . $qty * $album['price']; ?></td>
-			</tr>
-			<?php } ?>
-		    <tr>
-		    	<th>&nbsp;</th>
-		    	<th>&nbsp;</th>
-		    	<th><?php echo $_SESSION['total_items']; ?></th>
-		    	<th><?php echo "R" . $_SESSION['total_items']; ?></th>
-		    </tr>
-	   	</table>
-		   <button type="submit" class="btn btn-warning" name="save_change">Save Changes</button>
-	  
-	</form>
-
-  <div>
-	<a href="checkout.php" class="btn btn-warning">Checkout</a> 
-	<a href="products.php" class="btn btn-warning">Continue Shopping</a>
-  </div>
-
-<?php	 
-	if(isset($conn)){ mysqli_close($conn); } }
+  <?php
+    $fullurl="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if(strpos($fullurl,"signin=empty")==true){
+        echo '<P style="color:red">You did not fill in all the fields.</P>';
+        exit();
+    }
+    if(strpos($fullurl,"signin=invalidusername")==true){
+        echo '<P style="color:red">Username Does not exist.</P>';
+        exit();
+    }
+    if(strpos($fullurl,"signin=invalidpassword")==true){
+        echo '<P style="color:red">Password is not correct.</P>';
+        exit();
+    }
 ?>
-
 
 </body>
 

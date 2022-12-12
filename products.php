@@ -1,9 +1,22 @@
 <?php
-session_start();
+
 $count = 0;
 
+$product_id = $_GET['product_id'];
+
 include __DIR__ . "/./src/database.php";
+
+session_start();
 $conn = dbconnect();
+
+$query = "SELECT * FROM products WHERE product_id = '$product_id'";
+$result = mysqli_query($conn, $query);
+if (!$result){
+  echo "Error retrieving data " . mysqli_error($conn);
+  exit;
+}
+
+//sort fundtions
 if (isset($_POST['sort'])) {
   $query = "SELECT * FROM products order by name";
 } else if (isset($_POST['cost'])) {
@@ -13,7 +26,8 @@ if (isset($_POST['sort'])) {
 }
 
 $result = mysqli_query($conn, $query);
-$title = "Catalogue of Products"
+
+
 
 ?>
 
@@ -90,14 +104,19 @@ $title = "Catalogue of Products"
     <!-- Background image -->
   </header>
 
+<div class="sort-nav">
+  <form method="post" action="albums.php">
+  <div class="radio">
+    <label class="text"><input class="text" type="radio" name="asc" >Ascending</label>
+  </div>
+  <div class="radio">
+    <label class="text"><input class="text" type="radio" name="desc">Descending</label>
+  </div>
 
-    <div class="product-nav">
-      <form method="post" action="">
-      <input type="submit" name="sort" class="btn btn-warning sort-btn" value="A-Z">
-      <input type="submit" name="cost" class="btn btn-warning sort-btn" value="Price">
-      </form>
-    </div>
-
+  <button type="submit" class="btn btn-warning" name="title">Title</button>
+  <button type="submit" class="btn btn-warning" name="price">Price</button>
+  </form>
+</div>
 
         <div class="product-container">
 
@@ -116,7 +135,10 @@ $title = "Catalogue of Products"
               </div>
               <div class="card-footer">
                 <small class="text-muted">
-                  <input type="submit" class="btn btn-outline-dark btn-sm" name="purchase" value="add to cart">
+                <form method="post" action="cart.php">
+            <input type="hidden" name="productid" value="<?php echo $query_row['product_id']?>">
+            <input type="submit" value="Add to Cart" name="cart" class="btn btn-warning">
+                </form>
                 </small>
               </div>
             </div>

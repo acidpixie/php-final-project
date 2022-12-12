@@ -35,9 +35,9 @@ if (!function_exists("fetchBestsellers")) {
 }
 
 //get product
-if (!function_exists("getAlbumId")){
-    function getAlbumId($conn, $product_id){
-        $query = "SELECT name, artist, price from products WHERE product_id = '$product_id'";
+if (!function_exists("getProductId")){
+    function getProductId($conn, $id){
+        $query = "SELECT name, artist, price from products WHERE product_id = '$id'";
         $result = mysqli_query($conn, $query);
         if (!$result) {
             echo "Error! Cannot retrieve info " . mysqli_error($conn);
@@ -75,9 +75,9 @@ if (!function_exists("insertIntoCart")){
 
 //get product price
 if (!function_exists("getPrice")){
-	function getPrice($product_id){
+	function getPrice($id){
 		$conn = dbconnect();
-		$query = "SELECT price FROM products WHERE product_id = '$product_id'";
+		$query = "SELECT price FROM products WHERE product_id = '$id'";
 		$result = mysqli_query($conn, $query);
 		if(!$result){
 			echo "get product price failed! " . mysqli_error($conn);
