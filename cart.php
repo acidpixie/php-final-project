@@ -3,8 +3,8 @@ session_start();
 
 $product_id = $_GET['productid'];
 
-include __DIR__ . "/./src/database.php";
-include __DIR__ . "/./src/cart.functions.php";
+require_once __DIR__ . "/./src/database.php";
+require_once __DIR__ . "/./src/cart.functions.php";
 
 $conn = dbconnect();
 
@@ -16,11 +16,12 @@ if(isset($product_id)) {
   
   if(!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
+
     $_SESSION['total_items'] = 0;
     $_SESSION['total_price'] = '0.00';
   }
 
-if(isset($_SESSION['cart'][$product_id])){
+if(!isset($_SESSION['cart'][$product_id])){
   $_SESSION['cart'][$product_id] = 1;
 } elseif(isset($_POST['cart'])){
   $_SESSION['cart'][$product_id]++;
@@ -153,17 +154,20 @@ if(isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))){
 		    	<th>&nbsp;</th>
 		    	<th>&nbsp;</th>
 		    	<th><?php echo $_SESSION['total_items']; ?></th>
-		    	<th><?php echo "R" . $_SESSION['total_items']; ?></th>
+		    	<th><?php echo "R" . $_SESSION['total_price']; ?></th>
 		    </tr>
 	   	</table>
-		   <button type="submit" class="btn btn-warning" name="save_change">Save Changes</button>
-	  
-	</form>
+		  <!-- <button type="submit" class="btn btn-warning" name="save_change">Save Changes</button> -->
+
 
   <div>
 	<a href="checkout.php" class="btn btn-warning">Checkout</a> 
 	<a href="products.php" class="btn btn-warning">Continue Shopping</a>
   </div>
+	  
+	</form>
+
+
 
 <?php	 
 	if(isset($conn)){ mysqli_close($conn); } }

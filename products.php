@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $query);
     </div>
     <!-- Background image -->
   </header>
-
+<!--
 <div class="sort-nav">
   <form method="post" action="albums.php">
   <div class="radio">
@@ -117,6 +117,7 @@ $result = mysqli_query($conn, $query);
   <button type="submit" class="btn btn-warning" name="price">Price</button>
   </form>
 </div>
+-->
 
         <div class="product-container">
 
