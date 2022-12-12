@@ -1,11 +1,3 @@
-<?php 
-
-include __DIR__ . "/src/model/Album.php";
-
-$bestsellers = StoreDAO::getBestsellers();
-$products = StoreDAO::fetchAllProducts();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -40,11 +40,17 @@ a{
 }
 
 .product-container {
-    justify-content: center;
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
     color: #974603b9;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .sort-btn {

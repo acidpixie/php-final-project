@@ -1,3 +1,22 @@
+<?php
+session_start();
+$count = 0;
+
+include __DIR__ . "/./src/database.php";
+$conn = dbconnect();
+if (isset($_POST['sort'])) {
+  $query = "SELECT * FROM products order by name";
+} else if (isset($_POST['cost'])) {
+  $query = "SELECT * FROM products order by price";
+} else {
+  $query = "SELECT * FROM products";
+}
+
+$result = mysqli_query($conn, $query);
+$title = "Catalogue of Products"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +25,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 
   <!-- Latest compiled and minified CSS -->
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/9034ff5f85.js" crossorigin="anonymous"></script>
-  
-  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 
 
   <title>Shop</title>
@@ -24,8 +42,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarExample01">
@@ -56,7 +73,7 @@
     </nav>
     <!-- Navbar -->
 
-   <!-- Background image -->
+    <!-- Background image -->
     <div class="p-5 text-center bg-image" style="
       background-image: url('./images/headerImg2.jpg');
       height: 250px;
@@ -73,49 +90,52 @@
     <!-- Background image -->
   </header>
 
-<div id="app"> 
 
-  <div class="product-nav">
-    <button type="button" name="sort" class="btn btn-warning sort-btn">A-Z</button>
-    <button type="button" name="price" class="btn btn-warning sort-btn">Price</button>
-  </div>
-
-  <div class="product-container">
-
-    <div class="items">
-    <?php if (!empty($product_id)) : ?>
-
-    <?php foreach ($product_id as $product_id) ?>
-    <?php $product = new Album($product_id);['product_id)']; ?>
-
-      <div class="card p-2 m-2" style="width: 20rem;">
-        <div class="img-hover-zoom">
-        <img id="profile-img" src=".<?= $product->getImage() ?>" width="302px" height="302px" data-original="./images/mito.jpg"/>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"> <?= $product->getArtist() ?> </h5>
-          <p class="card-text"> <?= $product->getName() ?> </p>
-          <p class="card-text"> <?= $product->getPrice() ?> </p>
-          <p class="card-text"> <?= $product->getReleased() ?> </p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            <input type="number" name="quantity" value="">
-            <?php if(isset($_SESSION['Cart']) === true) : ?>
-            <?php if (in_array($product->getId(), $_SESSION['Cart'])) : ?>
-            <?php endif ?>
-            <input type="submit" class="btn btn-outline-dark btn-sm" name="purchase" value="add to cart">
-          </small>
-        </div>
-      </div>
-
+    <div class="product-nav">
+      <button type="button" name="sort" class="btn btn-warning sort-btn">A-Z</button>
+      <button type="button" name="cost" class="btn btn-warning sort-btn">Price</button>
     </div>
-  </div>
 
-</div>
+
+        <div class="product-container">
+
+          <div class="items">
+          <?php for ($i = 0; $i < mysqli_num_rows($result); $i++) { ?>
+          <?php while ($query_row = mysqli_fetch_assoc($result)) { ?>
+            <div class="card p-2 m-2" style="width: 20rem;">
+              <div class="img-hover-zoom">
+                <img id="profile-img" src="<?php echo $query_row['image']; ?>" width="302px" height="302px" data-original="./images/mito.jpg" />
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"> <?php echo $query_row['artist']; ?> </h5>
+                <p class="card-text"> <?php echo $query_row['name']; ?> </p>
+                <p class="card-text"> <?php echo $query_row['price']; ?> </p>
+                <p class="card-text"> <?php echo $query_row['released']; ?> </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <input type="submit" class="btn btn-outline-dark btn-sm" name="purchase" value="add to cart">
+                </small>
+              </div>
+            </div>
+          <?php
+          $count++;
+          if ($count >= 3) {
+            $count = 0;
+          }
+        } ?>
+        <?php
+      }
+      if (isset($conn)) {
+        mysqli_close($conn);
+      }
+        ?>
+          </div>
+        </div>
+
+
 
 </body>
-
 
 <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
@@ -124,15 +144,13 @@
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-          class="fa-brands fa-facebook-f"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-facebook-f"></i></a>
 
       <!-- Twitter -->
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-twitter"></i></a>
 
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-          class="fa-brands fa-instagram"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fa-brands fa-instagram"></i></a>
 
       <!-- Section: Social media -->
   </div>
@@ -144,7 +162,6 @@
   </div>
   <!-- Copyright -->
 </footer>
-
 
 
 </html>
