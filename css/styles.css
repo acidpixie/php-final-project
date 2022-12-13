@@ -12,6 +12,10 @@ body {
     text-align: center;
 }
 
+.teamInfo {
+    padding: 10px;
+}
+
 
 /* Login and Sign-up Page */
 
@@ -66,6 +70,13 @@ a{
     padding-left: 5px;
     padding-right: 5px;
     color:#814522 ;
+}
+
+.radio {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
 }
 
 
@@ -129,4 +140,15 @@ a{
     flex-wrap: wrap;
     justify-content: center;
 }
+
+/* Purchase Page */
+.info {
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    margin-top: 5px;
+}
+
 

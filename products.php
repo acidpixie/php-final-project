@@ -17,11 +17,28 @@ if (!$result){
 }
 
 //sort fundtions
-if (isset($_POST['sort'])) {
-  $query = "SELECT * FROM products order by name";
-} else if (isset($_POST['cost'])) {
-  $query = "SELECT * FROM products order by price";
-} else {
+if(isset($_POST['title'])){
+  if(isset($_POST['asc'])){
+    $query = "SELECT * FROM products order by name asc";
+
+  }
+  else if(isset($_POST['desc'])){
+    $query = "SELECT * FROM products order by name desc";
+  }else{
+    $query = "SELECT * FROM products";
+  }
+}else if(isset($_POST['price'])){
+  if(isset($_POST['asc'])){
+    $query = "SELECT * FROM products order by artist asc";
+
+  }
+  else if(isset($_POST['desc'])){
+    $query = "SELECT * FROM products order by artist desc";
+  }else{
+    $query = "SELECT * FROM products";
+  }
+
+  }else{
   $query = "SELECT * FROM products";
 }
 
@@ -107,7 +124,7 @@ $result = mysqli_query($conn, $query);
       margin-top: 58px;
     "
   >
-      <div class="mask">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text-white">
             <h1 class="mb-3">Catalogue</h1>
@@ -119,9 +136,10 @@ $result = mysqli_query($conn, $query);
     </div>
     <!-- Background image -->
   </header>
-<!--
+
+  
 <div class="sort-nav">
-  <form method="post" action="albums.php">
+  <form method="post" action="products.php">
   <div class="radio">
     <label class="text"><input class="text" type="radio" name="asc" >Ascending</label>
   </div>
@@ -129,11 +147,10 @@ $result = mysqli_query($conn, $query);
     <label class="text"><input class="text" type="radio" name="desc">Descending</label>
   </div>
 
-  <button type="submit" class="btn btn-warning" name="title">Title</button>
+  <button type="submit" class="btn btn-warning" name="title">Name</button>
   <button type="submit" class="btn btn-warning" name="price">Price</button>
   </form>
 </div>
--->
 
         <div class="product-container">
 

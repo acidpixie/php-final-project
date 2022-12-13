@@ -37,7 +37,7 @@ if(empty($firstname) || empty($surname) || empty($email) || empty($password) || 
                 exit;
         }
         $user_id = mysqli_insert_id($conn);
-        header("Location: signin.php");
+        header("Location: login.php");
         } else {
             $row = mysqli_fetch_assoc($findResult);
             $user_id = $row['user_id'];

@@ -2,6 +2,8 @@
 session_start();
 
 require_once __DIR__ . "/./src/database.php";
+$conn = dbconnect();
+
 // add in header
 $title = "Checkout";
 require_once "./templates/header.php";
@@ -15,7 +17,7 @@ if (isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))) {
 
 ?>
 
-	<table class="table">
+<table class="table">
 		<tr>
 			<th>Item</th>
 			<th>Price</th>
@@ -40,20 +42,32 @@ if (isset($_SESSION['cart']) && (array_count_values($_SESSION['cart']))) {
 			<th><?php echo $_SESSION['total_items']; ?></th>
 			<th><?php echo "R" . $_SESSION['total_price']; ?></th>
 		</tr>
+        <tr>
+			<td>Shipping</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>60.00</td>
+		</tr>
+		<tr>
+			<th>Total Including Shipping</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th><?php echo "R" . ($_SESSION['total_price'] + 60); ?></th>
+		</tr>
 	</table>
+
 <?php
 
 	if (isset($_SESSION['user'])) {
-		echo '<form method="post" action="purchase.php" class="form-horizontal">
+		echo '<form method="post" action="index.php" class="form-horizontal">
 		<div class="form-group" style="margin-left:0px">
-			<input type="submit" name="submit" value="Purchase" class="btn btn-warning" >
-			<a href="cart.php" class="btn btn-warning">Edit Cart</a> 
+			<input type="submit" name="submit" value="done" class="btn btn-warning" >
 		</div>
 	</form>
-	<p class="lead">Please press Purchase to confirm your purchase, or Edit Cart to add or remove items.</p>';
+	<p class="lead">Order Completed</p>';
 	}
 } else {
-	echo "<p class=\"text-warning\">Your cart is empty! Please make sure you add some books in it!</p>";
+	echo "<p class=\"text-warning\">Failed!</p>";
 }
 if (isset($conn)) {
 	mysqli_close($conn);

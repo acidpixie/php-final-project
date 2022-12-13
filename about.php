@@ -60,7 +60,7 @@
         height: 250px;
         margin-top: 58px;
       ">
-      <div class="mask">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text-white">
             <h1 class="mb-3">About Us</h1>
@@ -95,31 +95,80 @@
 
       <div class="team">
 
-        <h4>Meet the Team Behind the Beat!</h4>
+        <h4 class="teamInfo">Meet the Team Behind the Beat!</h4>
 
-        <div class="card-group">
-          <div class="card">
-            <img class="card-img-top" src="./images/rae.jpg" width="300px" height="400px" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Raeghar</h5>
-              <p class="card-text">Head of Marketing and Sales. Works too hard, can never seem to get him off the laptop.</p>
-              <p class="card-text"><small class="text-muted">Work Hard, Play Hard</small></p>
+        <section style="background-color: #eee;">
+          <div class="container py-5">
+            <div class="row justify-content-center mb-3">
+              <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                          <img src="./images/rae.jpg" class="w-100" />
+                          <a href="#!">
+                            <div class="hover-overlay">
+                              <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-9 col-lg-9 col-xl-9">
+                        <h5>Raeghar</h5>
+
+                        <h6 class="text-wrap mb-9 mb-md-0">
+                          Head of Marketing and Sales.
+                        </h6>
+                        <p>Works too hard, can never seem to get him off the laptop.</p>
+                        <p>A genuine people person, loved everywhere he goes.</p>
+                        <h5>Motto</h5>
+                        <p>Work Hard, Play Hard.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="./images/theo.jpg" width="300px" height="400px" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Theodore</h5>
-              <p class="card-text">Head of Product. Always out looking for the latest release. He's just a vibe.</p>
-              <p class="card-text"><small class="text-muted">All in a Days Work</small></p>
+            <div class="row justify-content-center mb-3">
+              <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                          <img src="./images/theo.jpg" class="w-100" />
+                          <a href="#!">
+                            <div class="hover-overlay">
+                              <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-md-9 col-lg-9 col-xl-9">
+                        <h5>Theodore</h5>
+
+                        <h6 class="text-wrap mb-9 mb-md-0">
+                          Head of Product.
+                        </h6>
+                        <p>Always out looking for the latest release. He's just a vibe.</p>
+                        <p>No song-bird has been able to escape his grasp.</p>
+                        <h5>Motto</h5>
+                        <p>All in a days work.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        </section>
 
 
 
       </div>
     </div>
+
+
   </section>
 
 
