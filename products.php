@@ -27,24 +27,23 @@ if(isset($_POST['title'])){
   }else{
     $query = "SELECT * FROM products";
   }
-}else if(isset($_POST['price'])){
-  if(isset($_POST['asc'])){
-    $query = "SELECT * FROM products order by artist asc";
-
-  }
-  else if(isset($_POST['desc'])){
-    $query = "SELECT * FROM products order by artist desc";
-  }else{
-    $query = "SELECT * FROM products";
-  }
-
-  }else{
-  $query = "SELECT * FROM products";
 }
 
-$result = mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
 
+  if(isset($_POST['price'])){
+    if(isset($_POST['asc'])){
+      $query = "SELECT * FROM products order by price asc";
 
+    }
+    else if(isset($_POST['desc'])){
+      $query = "SELECT * FROM products order by price desc";
+    }else{
+      $query = "SELECT * FROM products";
+    }
+  }
+
+  $result = mysqli_query($conn, $query);
 
 ?>
 
@@ -147,7 +146,7 @@ $result = mysqli_query($conn, $query);
     <label class="text"><input class="text" type="radio" name="desc">Descending</label>
   </div>
 
-  <button type="submit" class="btn btn-warning" name="title">Name</button>
+  <button type="submit" class="btn btn-warning" name="title">Title</button>
   <button type="submit" class="btn btn-warning" name="price">Price</button>
   </form>
 </div>
