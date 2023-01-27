@@ -10,13 +10,16 @@ session_start();
 $conn = dbconnect();
 
 $query = "SELECT * FROM products WHERE product_id = '$product_id'";
+$query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);
 if (!$result){
   echo "Error retrieving data " . mysqli_error($conn);
   exit;
 }
 
-//sort fundtions
+
+
+//sort functions
 if(isset($_POST['title'])){
   if(isset($_POST['asc'])){
     $query = "SELECT * FROM products order by name asc";
@@ -43,7 +46,7 @@ if(isset($_POST['title'])){
     }
   }
 
-  $result = mysqli_query($conn, $query);
+  //$result = mysqli_query($conn, $query);
 
 ?>
 
